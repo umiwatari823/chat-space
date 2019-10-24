@@ -46,7 +46,7 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :groups
+- belongs_to :group
 - belongs_to :user
 
 
@@ -59,4 +59,4 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :groups
+- belongs_to :group
