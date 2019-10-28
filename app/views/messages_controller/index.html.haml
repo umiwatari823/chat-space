@@ -1,0 +1,45 @@
+%body
+  .flash-box
+  .wrapper
+    .chat-side
+      .side-header
+        .side-header__box
+          %p.side-header__box__user-name kaito
+          %ul.side-header__box__menu
+            %li.side-header__box__menu__new-group
+              = link_to '#' do
+                %i.fa.fa-edit
+            %li.side-header__box__menu__edit-user
+              = link_to '#' do
+                %i.fa.fa-cog
+      .groups
+        = link_to '#' do
+          .group
+            %p.group__group-name kaitokaito
+            %p.group__latest-message aaaaa
+    .chat-main
+      .main-header
+        .main-header__left-box
+          %h2.main-header__left-box__current-group{"data-group_id": "3470"}
+            kaitokaito
+          %ul.main-header__left-box__member-list
+            Member：
+            %li.main-header__left-box__member-list__member kaito
+        = link_to '#' do
+          .main-header__edit-btn Edit
+      .messages
+        .message{"data-message_id": "8669"}
+          .message__upper-info
+            %p.message__upper-info__talker kaito
+            %p.message__upper-info__date 2019/10/25(Fri) 16:11:23
+          %p.message__text aaaaa
+      .form
+        %form#new_message.new_message{"accept-charset": "UTF-8", action: "/groups/3470/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "z7bLQqais5Oi38QEXkBFaQXnSvgEjJCudn5YeCNhP1gOyfB1/KamFUKNaelrz/tCz0kL0ccySBhT4eCaLGkSSQ=="}/
+          .input-box
+            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+            %label.input-box__image{for: "message_image"}
+              %i.fa.fa-image
+              %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
+          %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
