@@ -4,7 +4,7 @@
     background-color: #ddd;
 }
 
-.form form {
+.new_message {
     display: flex;
 }
 
@@ -14,12 +14,11 @@
     font-weight: inherit;
 }
 
-.input-box {
+.form__mask {
     position: relative;
-    width: 100%;
 }
 
-.input-box__text {
+.form__message {
     height: 50px;
     width: 100%;
     padding: 0 40px 0 10px;
@@ -27,7 +26,7 @@
     border-style: none;
 }
 
-.input-box__image {
+.form__mask__image {
     font-size: 1.3rem;
     position: absolute;
     top: 10px;
@@ -35,11 +34,11 @@
     cursor: pointer;
 }
 
-.input-box__image__file {
+.hidden {
     display: none;
 }
 
-.fa {
+.icon {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
@@ -47,7 +46,7 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.submit-btn {
+.form__submit {
     width: 100px;
     height: 50px;
     padding: 0 30px;
