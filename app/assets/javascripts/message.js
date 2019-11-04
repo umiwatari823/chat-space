@@ -1,5 +1,5 @@
 $(function(){
-    $(document).on('turbolinks:load', function(){
+  $(document).on('turbolinks:load', function(){
     function buildHTML(message) {  
     var content = message.content ? `${ message.content }` : "";
     var image = message.image ? `<img src= ${ message.image }>` : "";
@@ -19,32 +19,32 @@ $(function(){
                 ${image}
                 </p>
             </div>`
-      return html;
-      }  
+        return html;
+        }  
     $('#new_message').on('submit', function(e){
         e.preventDefault();
         var message = new FormData(this); 
         var url = $(this).attr('action');
         $.ajax({
-        url: url,
-        type:'POST',
-        data: message,
-        dataType: 'json',
-        processData: false,
-        contentType: false
+          url: url,
+          type:'POST',
+          data: message,
+          dataType: 'json',
+          processData: false,
+          contentType: false
         })
         .done(function(data){
-            var html = buildHTML(data);
-            $('.messages').append(html);
-            $('#message_content').val(''); 
-            $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+          var html = buildHTML(data);
+          $('.messages').append(html);
+          $('#new_message')[0].reset(); 
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         })
         .fail(function(data){
-            alert('エラー');
+          alert('エラー');
       })
         .always(function(data){
           $('.form__submit').prop('disabled', false);
       })
     })
-    })
-    });
+   })
+  });
