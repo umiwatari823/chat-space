@@ -2,7 +2,7 @@ $(function(){
   $(document).on('turbolinks:load', function(){
     function buildHTML(message) {  
     var content = message.content ? `${ message.content }` : "";
-    var image = message.image ? `<img src= ${ message.image }>` : "";
+    var image = message.image.url ? `<img src= ${ message.image.url }>` : "";
     var html = `<div class="message" data-id="${message.id}">
                 <div class="message__upper-info">
                 <p class="message__upper-info__talker">
@@ -46,5 +46,28 @@ $(function(){
           $('.form__submit').prop('disabled', false);
       })
     })
-   })
+    var reloadMessages = function() {
+        last_message_id = $('.message').last().data("id");
+        var url = 'api/messages'
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          data: {id: last_message_id}
+        })
+    
+    .done(function(messages) {
+        var insertHTML = '';
+        messages.forEach(function (message) {
+        insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+          })
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},);
+        })
+        .fail(function(data){
+            alert('自動更新失敗');
+        });
+      };
+      setInterval(reloadMessages, 5000);
+   });
   });
