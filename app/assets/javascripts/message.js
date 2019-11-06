@@ -55,7 +55,7 @@ $(function(){
           dataType: 'json',
           data: {id: last_message_id}
         })
-    
+        
     .done(function(messages) {
         var insertHTML = '';
         messages.forEach(function (message) {
@@ -67,7 +67,10 @@ $(function(){
         .fail(function(data){
             alert('自動更新失敗');
         });
+    
       };
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){
       setInterval(reloadMessages, 5000);
+      }
    });
   });
