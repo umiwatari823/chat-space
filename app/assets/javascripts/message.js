@@ -1,5 +1,4 @@
 $(function(){
-  $(document).on('turbolinks:load', function(){
     function buildHTML(message) {  
     var content = message.content ? `${ message.content }` : "";
     var image = message.image.url ? `<img src= ${ message.image.url }>` : "";
@@ -72,5 +71,4 @@ $(function(){
       if (window.location.href.match(/\/groups\/\d+\/messages/)){
       setInterval(reloadMessages, 10000);
       }
-   });
   });
